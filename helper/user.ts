@@ -7,6 +7,7 @@
 import { faker } from "@faker-js/faker";
 import { User } from "./interface";
 import * as supertest from "supertest";
+import { Response } from "superagent";
 const request = supertest("http://localhost:8001/api/v1");
 
 export function getUser(role: string): User {
@@ -69,7 +70,7 @@ export async function signUp(user: User): Promise<any> {
   });
 };
 
-export function signUp2(user: User): Promise<any> {
+export function signUp2(user: User) {
   return request
   .post("/users/signup")
   .send(user)
@@ -92,7 +93,7 @@ export async function loginUser(user: User): Promise<any> {
   });
 };
 
-export function  loginUser2(user: User): Promise<any> {
+export function  loginUser2(user: User){
   return request
   .post("/users/login")
   .send(user)
@@ -114,7 +115,7 @@ export async function deleteFunction(cookie: string): Promise<any> {
   });
 }
 
-export function deleteFunction2(cookie: string): Promise<any> {
+export function deleteFunction2(cookie: string){
   return request
   .delete("/users/deleteMe")
   .set("Cookie", cookie)
