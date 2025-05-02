@@ -1,16 +1,21 @@
 export interface User {
     userId?: string;
     username?: string;
-    email: string;
+    email: string; // Required!
     avatar?: string;
-    password: string;
+    password: string; // Required!
     birthdate?: Date;
     registeredAt?: Date;
-    name: string;
-    passwordConfirm: string;
+    name: string; // Required!
+    passwordConfirm: string; // Required!
     role?: string;
   }
 
+
+  // making all the fields optional
+  export type PartialUser = Partial<User>;
+
+  
 //   export type User = {
 //     userId?: string;
 //     username?: string;

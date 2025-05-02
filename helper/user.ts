@@ -5,7 +5,7 @@
 //     passwordConfirm: "test12345",
 //   };
 import { faker } from "@faker-js/faker";
-import { User } from "./interface";
+import { PartialUser, User } from "./interface";
 import * as supertest from "supertest";
 import { Response } from "superagent";
 const request = supertest("http://localhost:8001/api/v1");
@@ -14,7 +14,7 @@ export function getUser(role: string): User {
   const randomUser = createRandomUser();
   const password = "test12345";
   return {
-    name: randomUser.username,
+    name: randomUser.username || faker.person.fullName(),
     email: randomUser.email.toLowerCase(),
     password: password,
     passwordConfirm: password,
@@ -31,6 +31,8 @@ export function createRandomUser(omitFields: string[] = []): User {
     password: faker.internet.password(),
     birthdate: faker.date.birthdate(),
     registeredAt: faker.date.past(),
+    name: faker.person.fullName(),
+    passwordConfirm: faker.internet.password(),
   };
   omitFields.forEach((field) => {
     delete randomUser[field as keyof User];
@@ -38,11 +40,11 @@ export function createRandomUser(omitFields: string[] = []): User {
     return randomUser;
 }
 
-export function createUserWithMissingField(omitFields: string, role: string): User {
+export function createUserWithMissingField(omitFields: string[] = [], role: string = "user"): User {
     const randomUser = createRandomUser();
     const password = "test12345";
     const userData: User = {
-        name: randomUser.username,
+        name: randomUser.username || faker.person.fullName(),
         email: randomUser.email.toLowerCase(),
         password: password,
         passwordConfirm: password,
@@ -55,7 +57,7 @@ export function createUserWithMissingField(omitFields: string, role: string): Us
 }
 
 //Sign up user (Promise with async/await)
-export async function signUp(user: User): Promise<any> {
+export async function signUp(user: User | PartialUser): Promise<any> {
   return new Promise((resolve, reject) => {
     request
       .post("/users/signup")
@@ -70,15 +72,14 @@ export async function signUp(user: User): Promise<any> {
   });
 };
 
-export function signUp2(user: User) {
+export function signUp2(user: User | PartialUser) {
   return request
   .post("/users/signup")
   .send(user)
-  .expect(201)
 };
 
 //Login user (Promise with async/await)
-export async function loginUser(user: User): Promise<any> {
+export async function loginUser(user: User | PartialUser): Promise<any> {
   return new Promise((resolve, reject) => {
     request
       .post("/users/login")
@@ -93,11 +94,10 @@ export async function loginUser(user: User): Promise<any> {
   });
 };
 
-export function  loginUser2(user: User){
+export function  loginUser2(user: User | PartialUser) {
   return request
   .post("/users/login")
   .send(user)
-  .expect(200)
 }
 
 export async function deleteFunction(cookie: string): Promise<any> {
@@ -123,7 +123,10 @@ export function deleteFunction2(cookie: string){
 }
 
 
-export function validateErrorResponse(res: Response, missingField: string):void {
+export function validateErrorResponse(res: any, missingField: string):void {
+    expect(res.status).toBe(400);
+    expect(res.body.status).toBe("fail");
+    expect(res.body.message).toBe(`Missing required fields: ${missingField}`);
     
 }
 
