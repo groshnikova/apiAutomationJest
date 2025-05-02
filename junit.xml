@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.45">
+  <testsuite name="USER UPDATE - /users/updateMe" errors="0" failures="0" skipped="0" timestamp="2025-05-02T03:40:13" time="2.292" tests="1">
+    <testcase classname="USER UPDATE - /users/updateMe Should update user&apos;s name and email" name="USER UPDATE - /users/updateMe Should update user&apos;s name and email" time="0.056">
+    </testcase>
+  </testsuite>
+</testsuites>
