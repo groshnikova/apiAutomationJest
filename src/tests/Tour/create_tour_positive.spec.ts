@@ -17,7 +17,7 @@ describe("TOUR CREATE", () => {
       .post("/tours")
       .set("Cookie", cookie)
       .send({
-        name: "TourForn757",
+        name: "Test tour",
         duration: 10,
         description: "Could be",
         maxGroupSize: 10,
@@ -37,6 +37,7 @@ describe("TOUR CREATE", () => {
         console.log(tourRes.body, "tourRes");
         expect(tourRes.statusCode).toBe(201);
         expect(tourRes.body.data.difficulty).toEqual("easy");
+
       })
   });
 });
