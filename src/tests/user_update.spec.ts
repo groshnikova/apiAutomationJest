@@ -1,10 +1,7 @@
 import { User } from "../../helper/interface";
 import { deleteFunction, getUser, loginUser, signUp } from "../../helper/user";
 let cookie: string;
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 describe("USER UPDATE - /users/updateMe", () => {
   beforeAll(async () => {
     const user: User = getUser("admin");
@@ -43,7 +40,7 @@ describe("USER UPDATE - /users/updateMe", () => {
 
     expect(responseName.statusCode).toBe(200);
   });
-<<<<<<< HEAD
+
 
   it("Should reject password update via updateMe route", async () => {
     const responsePassword = await request
@@ -146,6 +143,5 @@ describe("USER UPDATE - /users/updateMe", () => {
     expect(loginResponse.statusCode).toBe(200);
 
   });
-=======
->>>>>>> master
+
 });
