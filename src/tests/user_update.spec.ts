@@ -89,7 +89,7 @@ describe("USER UPDATE - /users/updateMe", () => {
     expect(responseEmptyBody.body.status).toBe("fail");
     expect(responseEmptyBody.body.message).toContain("No fields to update.");
   });
-  it.only ("Should reject unauthorized field updates(role, reset token", async () => {
+  it.only ("Should reject unauthorized field updates(role, reset token)", async () => {
     const responseUnauthorizedField = await request
       .patch("/users/updateMe")
       .set("Cookie", cookie)
