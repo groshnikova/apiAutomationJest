@@ -42,6 +42,7 @@ export function createRandomUser(omitFields: string[] = []): User {
 
 export function createUserWithMissingField(omitFields: string[] = [], role: string = "user"): User {
     const randomUser = createRandomUser();
+    
     const password = "test12345";
     const userData: User = {
         name: randomUser.username || faker.person.fullName(),
