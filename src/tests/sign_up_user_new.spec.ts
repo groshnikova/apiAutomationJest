@@ -226,7 +226,7 @@ describe("USER SIGN UP", () => {
     });
 
     describe("NEGATIVE TESTING SCENARIOS with .then", () => {
-      it.only("Missing name", async () => {
+      it("Missing name", async () => {
         //create user data without name
         const userData = {
           email: faker.internet.email(),
