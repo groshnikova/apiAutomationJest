@@ -143,4 +143,5 @@ describe("USER UPDATE - /users/updateMe", () => {
 
     expect(loginResponse.statusCode).toBe(200);
 
-  });
+  })
+});
