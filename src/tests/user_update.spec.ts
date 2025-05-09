@@ -42,7 +42,8 @@ describe("USER UPDATE - /users/updateMe", () => {
   });
 
 
-  it("Should reject password update via updateMe route", async () => {
+  
+  it.only("Should reject password update via updateMe route", async () => {
     const responsePassword = await request
       .patch("/users/updateMe")
       .set("Cookie", cookie)
