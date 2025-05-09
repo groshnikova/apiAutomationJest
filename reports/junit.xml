@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.688">
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-09T03:23:35" time="1.531" tests="1">
-    <testcase classname="TOUR CREATE create tour" name="TOUR CREATE create tour" time="0.379">
     </testcase>
   </testsuite>
 </testsuites>
