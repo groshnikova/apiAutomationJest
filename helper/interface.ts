@@ -42,3 +42,28 @@ export interface ApiResponse {
     };
     token?: string;
 }
+
+export interface TourData {
+    name: string;
+    duration: number;
+    description: string;
+    maxGroupSize: number;
+    summary: string;
+    difficulty: "easy" | "medium" | "difficult";
+    price: number;
+    rating: number;
+    imageCover: string;
+    ratingsAverage: number;
+    guides?: string[];
+    startDates?: string[];
+    startLocation?: {
+        type: "Point";
+        coordinates: [number, number];
+    };
+    locations: {
+        type: "Point";
+        coordinates: [number, number];
+    }
+}
+
+export type PartialTour = Partial<Tour>;
