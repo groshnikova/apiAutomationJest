@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.69">
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-09T18:09:44" time="1.533" tests="1">
-    <testcase classname="TOUR CREATE create tour" name="TOUR CREATE create tour" time="0.373">
+<testsuites name="jest tests" tests="2" failures="0" errors="0" time="1.889">
+  <testsuite name="MONGODB connection" errors="0" failures="0" skipped="0" timestamp="2025-05-13T03:11:41" time="1.734" tests="2">
+    <testcase classname="MONGODB connection Connect to the collection and find user" name="MONGODB connection Connect to the collection and find user" time="0.016">
+    </testcase>
+    <testcase classname="MONGODB connection Create new user with imported data, delete and check" name="MONGODB connection Create new user with imported data, delete and check" time="0.363">
     </testcase>
   </testsuite>
 </testsuites>
