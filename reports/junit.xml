@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="13" failures="0" errors="0" time="1.734">
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-13T22:03:25" time="1.579" tests="13">
-    <testcase classname="TOUR CREATE should not create a tour with empty request body" name="TOUR CREATE should not create a tour with empty request body" time="0.033">
+<testsuites name="jest tests" tests="13" failures="0" errors="0" time="1.814">
+  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-13T22:07:21" time="1.662" tests="13">
+    <testcase classname="TOUR CREATE should not create a tour with empty request body" name="TOUR CREATE should not create a tour with empty request body" time="0.032">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing name" name="TOUR CREATE should not create a tour with missing name" time="0.021">
+    <testcase classname="TOUR CREATE should not create a tour with missing name" name="TOUR CREATE should not create a tour with missing name" time="0.02">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing duration" name="TOUR CREATE should not create a tour with missing duration" time="0.021">
+    <testcase classname="TOUR CREATE should not create a tour with missing duration" name="TOUR CREATE should not create a tour with missing duration" time="0.019">
     </testcase>
     <testcase classname="TOUR CREATE should not create a tour with missing maxGroupSize" name="TOUR CREATE should not create a tour with missing maxGroupSize" time="0.02">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing difficulty" name="TOUR CREATE should not create a tour with missing difficulty" time="0">
+    <testcase classname="TOUR CREATE should not create a tour with missing difficulty" name="TOUR CREATE should not create a tour with missing difficulty" time="0.02">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid difficulty" name="TOUR CREATE should not create a tour with invalid difficulty" time="0.001">
+    <testcase classname="TOUR CREATE should not create a tour with invalid difficulty" name="TOUR CREATE should not create a tour with invalid difficulty" time="0">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid rating (out of range)" name="TOUR CREATE should not create a tour with invalid rating (out of range)" time="0">
+    <testcase classname="TOUR CREATE should not create a tour with invalid rating (out of range)" name="TOUR CREATE should not create a tour with invalid rating (out of range)" time="0.001">
     </testcase>
     <testcase classname="TOUR CREATE should not create a tour with discount price higher than regular price" name="TOUR CREATE should not create a tour with discount price higher than regular price" time="0">
     </testcase>

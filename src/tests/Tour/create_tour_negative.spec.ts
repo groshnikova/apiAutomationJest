@@ -79,7 +79,19 @@ describe("TOUR CREATE",() => {
         expect(noMaxGroupSizeRes.body.status).toBe("fail");
         expect(noMaxGroupSizeRes.body.message).toContain("A tour must have a group size");
     });
-    it("should not create a tour with missing difficulty", async () => {});
+    it("should not create a tour with missing difficulty", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.difficulty; // Remove the difficulty property to simulate missing data
+        const noDifficultyRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+        console.log("Response body:", noDifficultyRes.body); // Log the response body for debugging
+
+        expect(noDifficultyRes.statusCode).toBe(400);
+        expect(noDifficultyRes.body.status).toBe("fail");
+        expect(noDifficultyRes.body.message).toContain("Difficulty is either: easy, medium, difficult");
+    });
     it("should not create a tour with invalid difficulty", async () => {});
     it("should not create a tour with invalid rating (out of range)", async () => {});
     it("should not create a tour with discount price higher than regular price", async () => {});   
