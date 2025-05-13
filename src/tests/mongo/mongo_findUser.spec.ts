@@ -1,6 +1,6 @@
 import { getUser, signUp } from "../../../helper/user";
 
-const { MongoClient, Db } = require("mongodb");
+const { MongoClient, Db, ObjectId } = require("mongodb");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -44,17 +44,30 @@ describe("MONGODB connection", () => {
       console.log(res.body);
       const users = db.collection("users");
       const userData = await users.findOne({ name: userImport.name });
-      if(!userData){
+      if (!userData) {
         throw new Error("User not found");
-      };
+      }
       expect(userData.name).toEqual(userImport.name);
-        expect(userData.email).toEqual(userImport.email.toLowerCase());
-        expect(userData.role).toBe("admin");
-        expect(userData._id).toEqual(res.body.data.user._id);
+      expect(userData.email).toEqual(userImport.email.toLowerCase());
+      expect(userData.role).toBe("admin");
+      expect(userData._id.toString()).toEqual(res.body.data.user._id);
+
+      //Delete the user
+      let deleteData = await users.deleteOne({
+        _id: new ObjectId(userData._id),
+      });
+      console.log(deleteData, "deleteData");
+      //Check if the user is deleted
+      let findUser = await users.findOne({
+        _id: new ObjectId(userData._id)
+      });
+      expect(findUser).toBeNull();
+      expect(findUser).toBe(null);
     } catch (error) {
       console.log("Error creating user:", error);
+      throw error;
     }
-    //Delete the user
-    //Check if the user is deleted
+
+    
   });
 });
