@@ -5,7 +5,7 @@
 //each line use faker for the data about tour
 
 import { faker } from "@faker-js/faker";
-import {TourData, PartialTour} from "./interface";
+import {TourData, PartialTourData} from "./interface";
 import * as supertest from "supertest";
 import { Response } from "superagent";
 const request = supertest("http://localhost:8001/api/v1");
@@ -19,7 +19,7 @@ export function generateRandomTourData(): TourData{
         summary: faker.lorem.sentence(),
         difficulty: faker.helpers.arrayElement(["easy", "medium", "difficult"]),
         price: faker.number.int({min: 100, max: 5000}),
-        ratingsAverage: faker.number.float({min: 1, max: 5}),//precision      is not known parameter???
+        ratingsAverage: faker.number.float({min: 1, max: 5, fractionDigits: 1 }),//precision      is not known parameter???
         imageCover: faker.image.urlPicsumPhotos(),
         guides: [],
         startDates: [faker.date.future().toISOString()],
