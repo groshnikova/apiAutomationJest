@@ -19,6 +19,7 @@ export function generateRandomTourData(): TourData{
         summary: faker.lorem.sentence(),
         difficulty: faker.helpers.arrayElement(["easy", "medium", "difficult"]),
         price: faker.number.int({min: 100, max: 5000}),
+        priceDiscount: faker.number.int({min: 1, max: 100}),
         ratingsAverage: faker.number.float({min: 1, max: 5, fractionDigits: 1 }),//precision      is not known parameter???
         imageCover: faker.image.urlPicsumPhotos(),
         guides: [],
