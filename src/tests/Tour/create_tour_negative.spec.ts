@@ -152,7 +152,7 @@ describe("TOUR CREATE",() => {
     });
     it("should not create a tour with missing start location coordinates", async () => {
         const tourData: PartialTourData = generateRandomTourData();
-        delete tourData.startLocation?.coordinates;
+        delete tourData.startLocation.coordinates;
 
         const noStartLocationRes: Response = await request
             .post("/tours")
@@ -179,5 +179,18 @@ describe("TOUR CREATE",() => {
         expect(invalidCoordinatesRes.body.status).toBe("fail");
         expect(invalidCoordinatesRes.body.message).toContain("Invalid location format");
     });
-    it("should not create a tour with unauthorized user", async () => {});
+    it("should not create a tour with unauthorized user", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        // Simulate unauthorized user by not providing a valid cookie
+        const unauthorizedRes: Response = await request
+            .post("/tours")
+            .set("Cookie", "invalid_cookie")
+            .send(tourData);
+
+        console.log("Response body:", unauthorizedRes.body); // Log the response body for debugging
+
+        expect(unauthorizedRes.statusCode).toBe(401);
+        expect(unauthorizedRes.body.status).toBe("fail");
+        expect(unauthorizedRes.body.message).toContain("You are not logged in! Please log in to get access.");
+    });
 })
