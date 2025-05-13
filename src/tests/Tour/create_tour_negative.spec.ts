@@ -2,6 +2,7 @@ import * as supertest from "supertest";
 import {Response} from "superagent";
 import {PartialTourData} from "../../../helper/interface";
 import { deleteFunction, getUser, signUp } from "../../../helper/user";
+import { generateRandomTourData } from "../../../helper/tour";
 
 const request = supertest("http://localhost:8001/api/v1");
 
@@ -39,7 +40,19 @@ describe("TOUR CREATE",() => {
         expect(response.body.status).toBe("fail");
         expect(response.body.message).toContain("Request body cannot be empty");
     });
-    it("should not create a tour with missing name", async () => {});
+    it("should not create a tour with missing name", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.name; // Remove the name property to simulate missing data
+        const noNameRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+        console.log("Response body:", noNameRes.body); // Log the response body for debugging
+
+        expect(noNameRes.statusCode).toBe(400);
+        expect(noNameRes.body.status).toBe("fail");
+        expect(noNameRes.body.message).toContain("A tour must have a name");
+    });
     it("should not create a tour with missing duration", async () => {});
     it("should not create a tour with missing maxGroupSize", async () => {});
     it("should not create a tour with missing difficulty", async () => {});
