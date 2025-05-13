@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="13" failures="0" errors="0" time="1.628">
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-13T21:31:21" time="1.475" tests="13">
-    <testcase classname="TOUR CREATE should not create a tour with empty request body" name="TOUR CREATE should not create a tour with empty request body" time="0.031">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing name" name="TOUR CREATE should not create a tour with missing name" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing duration" name="TOUR CREATE should not create a tour with missing duration" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing maxGroupSize" name="TOUR CREATE should not create a tour with missing maxGroupSize" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing difficulty" name="TOUR CREATE should not create a tour with missing difficulty" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid difficulty" name="TOUR CREATE should not create a tour with invalid difficulty" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid rating (out of range)" name="TOUR CREATE should not create a tour with invalid rating (out of range)" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with discount price higher than regular price" name="TOUR CREATE should not create a tour with discount price higher than regular price" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing summary" name="TOUR CREATE should not create a tour with missing summary" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing image cover" name="TOUR CREATE should not create a tour with missing image cover" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing start location coordinates" name="TOUR CREATE should not create a tour with missing start location coordinates" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with non-numeric start location coordinates" name="TOUR CREATE should not create a tour with non-numeric start location coordinates" time="0">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with unauthorized user" name="TOUR CREATE should not create a tour with unauthorized user" time="0">
+
     </testcase>
   </testsuite>
 </testsuites>
