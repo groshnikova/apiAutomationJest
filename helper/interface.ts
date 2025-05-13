@@ -51,7 +51,6 @@ export interface TourData {
     summary: string;
     difficulty: "easy" | "medium" | "difficult";
     price: number;
-    rating: number;
     imageCover: string;
     ratingsAverage: number;
     guides?: string[];
@@ -66,4 +65,4 @@ export interface TourData {
     }
 }
 
-export type PartialTour = Partial<Tour>;
+export type PartialTour = Partial<TourData>;
