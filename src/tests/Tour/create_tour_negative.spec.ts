@@ -150,7 +150,34 @@ describe("TOUR CREATE",() => {
         expect(noImageCoverRes.body.status).toBe("fail");
         expect(noImageCoverRes.body.message).toContain("A tour must have a cover image");
     });
-    it("should not create a tour with missing start location coordinates", async () => {});
-    it("should not create a tour with non-numeric start location coordinates", async () => {});
+    it("should not create a tour with missing start location coordinates", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.startLocation?.coordinates;
+
+        const noStartLocationRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+
+        console.log("Response body:", noStartLocationRes.body); // Log the response body for debugging
+
+        expect(noStartLocationRes.statusCode).toBe(400);
+        expect(noStartLocationRes.body.status).toBe("fail");
+        expect(noStartLocationRes.body.message).toContain("Invalid location format");
+    });
+    it("should not create a tour with non-numeric start location coordinates", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        tourData.startLocation.coordinates = ["invalid", "data"] as any; // Set invalid coordinates
+
+        const invalidCoordinatesRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+
+        console.log("Response body:", invalidCoordinatesRes.body); // Log the response body for debugging
+        expect(invalidCoordinatesRes.statusCode).toBe(400);
+        expect(invalidCoordinatesRes.body.status).toBe("fail");
+        expect(invalidCoordinatesRes.body.message).toContain("Invalid location format");
+    });
     it("should not create a tour with unauthorized user", async () => {});
 })
