@@ -66,7 +66,19 @@ describe("TOUR CREATE",() => {
         expect(noDurationRes.body.status).toBe("fail");
         expect(noDurationRes.body.message).toContain("A tour must have duration");
     });
-    it("should not create a tour with missing maxGroupSize", async () => {});
+    it("should not create a tour with missing maxGroupSize", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.maxGroupSize; // Remove the maxGroupSize property to simulate missing data
+        const noMaxGroupSizeRes: Response  = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+        console.log("Response body:", noMaxGroupSizeRes.body); // Log the response body for debugging
+
+        expect(noMaxGroupSizeRes.statusCode).toBe(400);
+        expect(noMaxGroupSizeRes.body.status).toBe("fail");
+        expect(noMaxGroupSizeRes.body.message).toContain("A tour must have a group size");
+    });
     it("should not create a tour with missing difficulty", async () => {});
     it("should not create a tour with invalid difficulty", async () => {});
     it("should not create a tour with invalid rating (out of range)", async () => {});
