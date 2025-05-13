@@ -51,11 +51,11 @@ export interface TourData {
     summary: string;
     difficulty: "easy" | "medium" | "difficult";
     price: number;
-    imageCover: string;
+    imageCover?: string;
     ratingsAverage: number;
     guides?: string[];
     startDates?: string[];
-    startLocation?: {
+    startLocation: {
         type: "Point";
         coordinates: [number, number];
     };
@@ -65,4 +65,4 @@ export interface TourData {
     }
 }
 
-export type PartialTour = Partial<TourData>;
+export type PartialTourData = Partial<TourData>;
