@@ -53,7 +53,19 @@ describe("TOUR CREATE",() => {
         expect(noNameRes.body.status).toBe("fail");
         expect(noNameRes.body.message).toContain("A tour must have a name");
     });
-    it("should not create a tour with missing duration", async () => {});
+    it("should not create a tour with missing duration", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.duration; // Remove the duration property to simulate missing data
+        const noDurationRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+        console.log("Response body:", noDurationRes.body); // Log the response body for debugging
+
+        expect(noDurationRes.statusCode).toBe(400);
+        expect(noDurationRes.body.status).toBe("fail");
+        expect(noDurationRes.body.message).toContain("A tour must have duration");
+    });
     it("should not create a tour with missing maxGroupSize", async () => {});
     it("should not create a tour with missing difficulty", async () => {});
     it("should not create a tour with invalid difficulty", async () => {});
