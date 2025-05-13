@@ -122,21 +122,7 @@ describe("TOUR CREATE",() => {
         expect(invalidRatingRes.body.status).toBe("fail");
         expect(invalidRatingRes.body.message).toContain("Ratings average must be between 1 and 5");
     });
-    it("should not create a tour with discount price higher than regular price", async () => {
-        const tourData: PartialTourData = generateRandomTourData();
-        tourData.price = 100; // Set a regular price
-        tourData.priceDiscount = tourData.price + 100; // Set a regular price
-        const invalidDiscountRes: Response = await request
-            .post("/tours")
-            .set("Cookie", cookie)
-            .send(tourData);
-
-        console.log("Response body:", invalidDiscountRes.body); // Log the response body for debugging
-        expect(invalidDiscountRes.statusCode).toBe(400);
-        expect(invalidDiscountRes.body.status).toBe("fail");
-        expect(invalidDiscountRes.body.message).toContain("Discount price should be below regular price");
-
-    });   
+    
     it("should not create a tour with missing summary", async () => {});
     it("should not create a tour with missing image cover", async () => {});
     it("should not create a tour with missing start location coordinates", async () => {});

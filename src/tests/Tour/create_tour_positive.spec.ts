@@ -51,4 +51,19 @@ describe("TOUR CREATE", () => {
       tourData.startLocation.coordinates
     );
   })
+  it("should not create a tour with discount price higher than regular price", async () => {
+    const tourData = generateRandomTourData();
+    tourData.price = 100; // Set a regular price
+    tourData.priceDiscount = tourData.price + 100; // Set a regular price
+    const invalidDiscountRes: Response = await request
+        .post("/tours")
+        .set("Cookie", cookie)
+        .send(tourData);
+
+    console.log("Response body:", invalidDiscountRes.body); // Log the response body for debugging
+    expect(invalidDiscountRes.statusCode).toBe(400);
+    expect(invalidDiscountRes.body.status).toBe("fail");
+    expect(invalidDiscountRes.body.message).toContain("Discount price should be below regular price");
+
+});   
 });
