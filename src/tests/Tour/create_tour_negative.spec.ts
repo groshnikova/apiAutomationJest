@@ -136,7 +136,20 @@ describe("TOUR CREATE",() => {
         expect(noSummaryRes.body.status).toBe("fail");
         expect(noSummaryRes.body.message).toContain("A tour must have a summary");
     });
-    it("should not create a tour with missing image cover", async () => {});
+    it("should not create a tour with missing image cover", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.imageCover; // Remove the imageCover property to simulate missing data
+        const noImageCoverRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+
+        console.log("Response body:", noImageCoverRes.body); // Log the response body for debugging
+
+        expect(noImageCoverRes.statusCode).toBe(400);
+        expect(noImageCoverRes.body.status).toBe("fail");
+        expect(noImageCoverRes.body.message).toContain("A tour must have a cover image");
+    });
     it("should not create a tour with missing start location coordinates", async () => {});
     it("should not create a tour with non-numeric start location coordinates", async () => {});
     it("should not create a tour with unauthorized user", async () => {});
