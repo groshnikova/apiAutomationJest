@@ -107,7 +107,21 @@ describe("TOUR CREATE",() => {
         expect(invalidDifficultyRes.body.message).toContain("Difficulty is either: easy, medium, difficult");
 
     });
-    it("should not create a tour with invalid rating (out of range)", async () => {});
+    it("should not create a tour with invalid rating (out of range)", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        tourData.ratingsAverage = 6; // Set an invalid rating
+
+        const invalidRatingRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+
+        console.log("Response body:", invalidRatingRes.body); // Log the response body for debugging
+
+        expect(invalidRatingRes.statusCode).toBe(400);
+        expect(invalidRatingRes.body.status).toBe("fail");
+        expect(invalidRatingRes.body.message).toContain("Ratings average must be between 1 and 5");
+    });
     it("should not create a tour with discount price higher than regular price", async () => {});   
     it("should not create a tour with missing summary", async () => {});
     it("should not create a tour with missing image cover", async () => {});
