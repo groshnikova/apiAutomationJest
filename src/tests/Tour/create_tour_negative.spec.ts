@@ -123,7 +123,19 @@ describe("TOUR CREATE",() => {
         expect(invalidRatingRes.body.message).toContain("Ratings average must be between 1 and 5");
     });
     
-    it("should not create a tour with missing summary", async () => {});
+    it("should not create a tour with missing summary", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        delete tourData.summary; // Remove the summary property to simulate missing data
+        const noSummaryRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+        console.log("Response body:", noSummaryRes.body); // Log the response body for debugging
+
+        expect(noSummaryRes.statusCode).toBe(400);
+        expect(noSummaryRes.body.status).toBe("fail");
+        expect(noSummaryRes.body.message).toContain("A tour must have a summary");
+    });
     it("should not create a tour with missing image cover", async () => {});
     it("should not create a tour with missing start location coordinates", async () => {});
     it("should not create a tour with non-numeric start location coordinates", async () => {});
