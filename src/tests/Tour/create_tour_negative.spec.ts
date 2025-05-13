@@ -92,7 +92,21 @@ describe("TOUR CREATE",() => {
         expect(noDifficultyRes.body.status).toBe("fail");
         expect(noDifficultyRes.body.message).toContain("Difficulty is either: easy, medium, difficult");
     });
-    it("should not create a tour with invalid difficulty", async () => {});
+    it("should not create a tour with invalid difficulty", async () => {
+        const tourData: PartialTourData = generateRandomTourData();
+        tourData.difficulty = "extreme" as "easy" | "medium" | "difficult";// Set an invalid difficulty
+        const invalidDifficultyRes: Response = await request
+            .post("/tours")
+            .set("Cookie", cookie)
+            .send(tourData);
+
+        console.log("Response body:", invalidDifficultyRes.body); // Log the response body for debugging
+
+        expect(invalidDifficultyRes.statusCode).toBe(400);
+        expect(invalidDifficultyRes.body.status).toBe("fail");
+        expect(invalidDifficultyRes.body.message).toContain("Difficulty is either: easy, medium, difficult");
+
+    });
     it("should not create a tour with invalid rating (out of range)", async () => {});
     it("should not create a tour with discount price higher than regular price", async () => {});   
     it("should not create a tour with missing summary", async () => {});
