@@ -15,6 +15,7 @@ describe("TOUR CREATE", () => {
     // Create an admin user
     adminUser = getUser("admin");
 
+
     //Sign up the admin user
     const signUpRes: Response = await signUp(adminUser);
     expect(signUpRes.statusCode).toBe(201);
@@ -31,6 +32,7 @@ describe("TOUR CREATE", () => {
     });
   });
 
+   
   //Positive test: Create Tour
   it("should create tour successfully", async () => {
     // Generate random tour data
@@ -65,5 +67,6 @@ describe("TOUR CREATE", () => {
     expect(invalidDiscountRes.body.status).toBe("fail");
     expect(invalidDiscountRes.body.message).toContain("Discount price should be below regular price");
 
-});   
-});
+    });
+  });
+

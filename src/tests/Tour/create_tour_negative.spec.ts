@@ -4,6 +4,7 @@ import {PartialTourData} from "../../../helper/interface";
 import { deleteFunction, getUser, signUp } from "../../../helper/user";
 import { generateRandomTourData } from "../../../helper/tour";
 
+
 const request = supertest("http://localhost:8001/api/v1");
 
 let cookie: string;
@@ -40,6 +41,7 @@ describe("TOUR CREATE",() => {
         expect(response.body.status).toBe("fail");
         expect(response.body.message).toContain("Request body cannot be empty");
     });
+
     it("should not create a tour with missing name", async () => {
         const tourData: PartialTourData = generateRandomTourData();
         delete tourData.name; // Remove the name property to simulate missing data
@@ -193,4 +195,5 @@ describe("TOUR CREATE",() => {
         expect(unauthorizedRes.body.status).toBe("fail");
         expect(unauthorizedRes.body.message).toContain("You are not logged in! Please log in to get access.");
     });
+
 })
