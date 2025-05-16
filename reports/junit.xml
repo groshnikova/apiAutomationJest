@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="6" failures="0" errors="0" time="1.676">
-  <testsuite name="POSTS" errors="0" failures="0" skipped="0" timestamp="2025-05-16T02:18:50" time="1.504" tests="6">
-    <testcase classname="POSTS get request" name="POSTS get request" time="0.158">
-    </testcase>
-    <testcase classname="POSTS POST request" name="POSTS POST request" time="0.052">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 1" name="POSTS PATCH request with title version 1" time="0.104">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 2" name="POSTS PATCH request with title version 2" time="0.088">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 3" name="POSTS PATCH request with title version 3" time="0.056">
-    </testcase>
-    <testcase classname="POSTS DELETE request" name="POSTS DELETE request" time="0.059">
     </testcase>
   </testsuite>
 </testsuites>
