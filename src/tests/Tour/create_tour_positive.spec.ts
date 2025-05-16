@@ -15,6 +15,7 @@ describe("TOUR CREATE", () => {
     // Create an admin user
     adminUser = getUser("admin");
 
+
     //Sign up the admin user
     const signUpRes: Response = await signUp(adminUser);
     expect(signUpRes.statusCode).toBe(201);
@@ -31,6 +32,7 @@ describe("TOUR CREATE", () => {
     });
   });
 
+   
   //Positive test: Create Tour
   it("should create tour successfully", async () => {
     // Generate random tour data
@@ -50,44 +52,21 @@ describe("TOUR CREATE", () => {
     expect(response.body.data.startLocation.coordinates).toEqual(
       tourData.startLocation.coordinates
     );
-=======
-    beforeAll(async () => {
-        // Create an admin user
-        adminUser = getUser("admin"); 
+  })
+  it("should not create a tour with discount price higher than regular price", async () => {
+    const tourData = generateRandomTourData();
+    tourData.price = 100; // Set a regular price
+    tourData.priceDiscount = tourData.price + 100; // Set a regular price
+    const invalidDiscountRes: Response = await request
+        .post("/tours")
+        .set("Cookie", cookie)
+        .send(tourData);
 
-        //Sign up the admin user
-        const signUpRes: Response = await signUp(adminUser);
-        expect(signUpRes.statusCode).toBe(201);
-        expect(signUpRes.body.data.user.email).toEqual(adminUser.email.toLowerCase());
-
-        //Store authentication cookie
-        cookie = signUpRes.headers["set-cookie"][0].split(";")[0];
-
-
-    });
-    afterAll(async () => {
-        await deleteFunction(cookie).then((res) => {
-            expect(res.statusCode).toBe(200);
-        });
-
-    });
-
-    //Positive test: Create Tout
-    it("should create tour successfully", async () => {
-        // Generate random tour data
-        const tourData: TourData = generateRandomTourData();
-        const response: Response = await request
-            .post("/tours")
-            .set("Cookie", cookie)
-            .send(tourData);
-
-        //Assertions
-        expect(response.statusCode).toBe(201);
-        expect(response.body.data.data.name).toBe(tourData.name);
-        expect(response.body.data.data.price).toBe(tourData.price); 
-        expect(response.body.data.data.difficulty).toBe(tourData.difficulty);
-        expect(response.body.data.data.startLocation.coordinates).toEqual(tourData.startLocation.coordinates);
-        
+    console.log("Response body:", invalidDiscountRes.body); // Log the response body for debugging
+    expect(invalidDiscountRes.statusCode).toBe(400);
+    expect(invalidDiscountRes.body.status).toBe("fail");
+    expect(invalidDiscountRes.body.message).toContain("Discount price should be below regular price");
 
     });
   });
+

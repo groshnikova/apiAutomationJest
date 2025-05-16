@@ -51,6 +51,7 @@ export interface TourData {
     summary: string;
     difficulty: "easy" | "medium" | "difficult";
     price: number;
+    priceDiscount?: number;
     imageCover?: string;
     ratingsAverage: number;
     guides?: string[];
