@@ -152,7 +152,7 @@ describe("TOUR CREATE",() => {
     });
     it("should not create a tour with missing start location coordinates", async () => {
         const tourData: PartialTourData = generateRandomTourData();
-        delete tourData.startLocation.coordinates;
+        delete tourData.startLocation;
 
         const noStartLocationRes: Response = await request
             .post("/tours")
@@ -167,7 +167,7 @@ describe("TOUR CREATE",() => {
     });
     it("should not create a tour with non-numeric start location coordinates", async () => {
         const tourData: PartialTourData = generateRandomTourData();
-        tourData.startLocation.coordinates = ["invalid", "data"] as any; // Set invalid coordinates
+        (tourData.startLocation as any).coordinates = ["invalid", "data"]; // Set invalid coordinates
 
         const invalidCoordinatesRes: Response = await request
             .post("/tours")

@@ -1,6 +1,6 @@
 //Declaration file for TypeScript
 
-import supertest from "supertest";
+import * as supertest from "supertest";
 
 // declare global {
 //   namespace NodeJS {
@@ -11,7 +11,7 @@ import supertest from "supertest";
 // }
 
 declare global{
-    const request: supertest.SuperTest<supertest.Test>;
+   var request: supertest.SuperTest<supertest.Test>;
 }
 
 /// <reference types="jest" />

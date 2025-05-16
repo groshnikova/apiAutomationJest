@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="12" failures="0" errors="0" time="1.877">
-  <testsuite name="TOUR CREATE" errors="0" failures="0" skipped="0" timestamp="2025-05-13T22:58:15" time="1.724" tests="12">
-    <testcase classname="TOUR CREATE should not create a tour with empty request body" name="TOUR CREATE should not create a tour with empty request body" time="0.037">
+<testsuites name="jest tests" tests="9" failures="2" errors="0" time="2.634">
+  <testsuite name="USER UPDATE - /users/updateMe" errors="0" failures="2" skipped="0" timestamp="2025-05-15T01:55:06" time="2.475" tests="9">
+    <testcase classname="USER UPDATE - /users/updateMe Should update user&apos;s photo" name="USER UPDATE - /users/updateMe Should update user&apos;s photo" time="0.041">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing name" name="TOUR CREATE should not create a tour with missing name" time="0.026">
+    <testcase classname="USER UPDATE - /users/updateMe Should update user&apos;s name" name="USER UPDATE - /users/updateMe Should update user&apos;s name" time="0.03">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing duration" name="TOUR CREATE should not create a tour with missing duration" time="0.021">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject password update via updateMe route" name="USER UPDATE - /users/updateMe Should reject password update via updateMe route" time="0.016">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing maxGroupSize" name="TOUR CREATE should not create a tour with missing maxGroupSize" time="0.022">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject updates without a token" name="USER UPDATE - /users/updateMe Should reject updates without a token" time="0.028">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing difficulty" name="TOUR CREATE should not create a tour with missing difficulty" time="0.021">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject invalid email format" name="USER UPDATE - /users/updateMe Should reject invalid email format" time="0.016">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid difficulty" name="TOUR CREATE should not create a tour with invalid difficulty" time="0.021">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject empty request body" name="USER UPDATE - /users/updateMe Should reject empty request body" time="0.022">
+      <failure>Error: expect(received).toContain(expected) // indexOf
+
+Expected substring: &quot;No fields to update.&quot;
+Received string:    &quot;Validation failed: email: Please provide your email, name: Please tell us your name!&quot;
+    at /Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:96:44
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with invalid rating (out of range)" name="TOUR CREATE should not create a tour with invalid rating (out of range)" time="0.022">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject unauthorized field updates(role, reset token" name="USER UPDATE - /users/updateMe Should reject unauthorized field updates(role, reset token" time="0.031">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 400
+Received: 200
+    at /Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:113:50
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing summary" name="TOUR CREATE should not create a tour with missing summary" time="0.025">
+    <testcase classname="USER UPDATE - /users/updateMe Should reject requests with an invalid token" name="USER UPDATE - /users/updateMe Should reject requests with an invalid token" time="0.003">
     </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing image cover" name="TOUR CREATE should not create a tour with missing image cover" time="0.023">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with missing start location coordinates" name="TOUR CREATE should not create a tour with missing start location coordinates" time="0.02">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with non-numeric start location coordinates" name="TOUR CREATE should not create a tour with non-numeric start location coordinates" time="0.02">
-    </testcase>
-    <testcase classname="TOUR CREATE should not create a tour with unauthorized user" name="TOUR CREATE should not create a tour with unauthorized user" time="0.005">
+    <testcase classname="USER UPDATE - /users/updateMe Should successfully update user name and email and the user can login" name="USER UPDATE - /users/updateMe Should successfully update user name and email and the user can login" time="0.322">
     </testcase>
   </testsuite>
 </testsuites>

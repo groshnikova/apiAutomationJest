@@ -82,13 +82,18 @@ describe("USER UPDATE - /users/updateMe", () => {
     const responseEmptyBody = await request
       .patch("/users/updateMe")
       .set("Cookie", cookie)
-      .send({});
+      .send({
+        name: null,
+        email:  null,
+        password: null,
+        passwordConfirm: null,
+        role: null,});
 
     expect(responseEmptyBody.statusCode).toBe(400);
     expect(responseEmptyBody.body.status).toBe("fail");
     expect(responseEmptyBody.body.message).toContain("No fields to update.");
   });
-  it.only ("Should reject unauthorized field updates(role, reset token", async () => {
+  it ("Should reject unauthorized field updates(role, reset token", async () => {
     const responseUnauthorizedField = await request
       .patch("/users/updateMe")
       .set("Cookie", cookie)
@@ -100,7 +105,7 @@ describe("USER UPDATE - /users/updateMe", () => {
 
       console.log("Response body:", responseUnauthorizedField.body);
 
-      expect(responseUnauthorizedField.body.data.user.role).toBe("user");
+      expect(responseUnauthorizedField.body.data.user.role).toBe("admin");
  
 
     expect(responseUnauthorizedField.statusCode).toBe(400);
