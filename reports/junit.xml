@@ -1,39 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="2" errors="0" time="2.634">
-  <testsuite name="USER UPDATE - /users/updateMe" errors="0" failures="2" skipped="0" timestamp="2025-05-15T01:55:06" time="2.475" tests="9">
-    <testcase classname="USER UPDATE - /users/updateMe Should update user&apos;s photo" name="USER UPDATE - /users/updateMe Should update user&apos;s photo" time="0.041">
+<testsuites name="jest tests" tests="6" failures="0" errors="0" time="1.676">
+  <testsuite name="POSTS" errors="0" failures="0" skipped="0" timestamp="2025-05-16T02:18:50" time="1.504" tests="6">
+    <testcase classname="POSTS get request" name="POSTS get request" time="0.158">
     </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should update user&apos;s name" name="USER UPDATE - /users/updateMe Should update user&apos;s name" time="0.03">
+    <testcase classname="POSTS POST request" name="POSTS POST request" time="0.052">
     </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject password update via updateMe route" name="USER UPDATE - /users/updateMe Should reject password update via updateMe route" time="0.016">
+    <testcase classname="POSTS PATCH request with title version 1" name="POSTS PATCH request with title version 1" time="0.104">
     </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject updates without a token" name="USER UPDATE - /users/updateMe Should reject updates without a token" time="0.028">
+    <testcase classname="POSTS PATCH request with title version 2" name="POSTS PATCH request with title version 2" time="0.088">
     </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject invalid email format" name="USER UPDATE - /users/updateMe Should reject invalid email format" time="0.016">
+    <testcase classname="POSTS PATCH request with title version 3" name="POSTS PATCH request with title version 3" time="0.056">
     </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject empty request body" name="USER UPDATE - /users/updateMe Should reject empty request body" time="0.022">
-      <failure>Error: expect(received).toContain(expected) // indexOf
-
-Expected substring: &quot;No fields to update.&quot;
-Received string:    &quot;Validation failed: email: Please provide your email, name: Please tell us your name!&quot;
-    at /Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:96:44
-    at Generator.next (&lt;anonymous&gt;)
-    at fulfilled (/Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
-    </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject unauthorized field updates(role, reset token" name="USER UPDATE - /users/updateMe Should reject unauthorized field updates(role, reset token" time="0.031">
-      <failure>Error: expect(received).toBe(expected) // Object.is equality
-
-Expected: 400
-Received: 200
-    at /Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:113:50
-    at Generator.next (&lt;anonymous&gt;)
-    at fulfilled (/Users/karinagrosnikova/Code/APIREST/apiAutomation/src/tests/user_update.spec.ts:5:58)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
-    </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should reject requests with an invalid token" name="USER UPDATE - /users/updateMe Should reject requests with an invalid token" time="0.003">
-    </testcase>
-    <testcase classname="USER UPDATE - /users/updateMe Should successfully update user name and email and the user can login" name="USER UPDATE - /users/updateMe Should successfully update user name and email and the user can login" time="0.322">
+    <testcase classname="POSTS DELETE request" name="POSTS DELETE request" time="0.059">
     </testcase>
   </testsuite>
 </testsuites>
